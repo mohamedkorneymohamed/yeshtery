@@ -1,0 +1,38 @@
+@import "swiper/css";
+@import'./software';
+@import'./it-solution';
+@import'../../Components/ScrollToTop/ScrollToTop.module.scss';
+@import'../../Components/MasterPage/FloatinDiv/FloatinDiv.module';
+@import'../../pages/Home/Home.module';
+@import'../../Components/MasterPage/Navbar/Navbar.module';
+@import'../../Components/SoftwareComponents/SoftwareNavbar/SoftwareNavbar.module';
+#root {
+    height: 100%;
+ul,a{
+    list-style: none;
+    text-decoration: none;
+}
+
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+    font-size: 1vw;
+    @media screen and (max-width:992px) {
+        font-size: 1.5vw;
+    }
+    @media screen and (max-width:768px) {
+        font-size: 2vw;
+    }
+      @media screen and (max-width: 576px) {
+          font-size: 3vw;
+      }
+}
+body {
+    font-size: 14px;
+    color: #000;
+    margin: 0;  
+    padding: 0;
+}

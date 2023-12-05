@@ -1,0 +1,60 @@
+.navbar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 10px 30px ;
+    background-color: transparent;
+        z-index: 9999;
+        transition: 3s;
+    .nav-item{
+        font-family: 'Tilte';
+        .nav-link{
+            color: $light;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .nv-button{
+        padding: 10px 15px;
+        border-radius: 40px;
+        border: transparent;
+        font-size: 1.1rem;
+        font-family: 'Tilte';
+        color: $light;
+        font-weight: bold;
+    }
+        }
+    }
+.second{
+    position: fixed;
+    left: 0;
+    top: -30%;
+    width: 100%;
+    padding: 10px 30px ;
+    background-color: transparent;
+        z-index: 9999;
+        transition: 2s;
+        background-color: #3333c4;
+
+    .nav-item{
+        font-family: 'Tilte';
+        .nav-link{
+            color: $light;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .nv-button{
+        padding: 10px 15px;
+        border-radius: 40px;
+        border: transparent;
+        font-size: 1.1rem;
+        font-family: 'Tilte';
+        color: $light;
+        font-weight: bold;
+    }
+        }
+    }
+    .move-to-bottom{
+        top: 0 ;
+    }
+  

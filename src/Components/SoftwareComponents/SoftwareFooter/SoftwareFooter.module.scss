@@ -1,0 +1,52 @@
+.software-footer{
+    height: 70vh;
+        background-image: url('../../../assets/image/linear-shape.png') ,
+         url('../../../assets/image/html-color.png'),
+         url('../../../assets/image/html-color.png') 
+             ;
+        background-repeat: no-repeat ;
+        background-size: contain   , auto , auto ;
+        background-color: #3333c4;
+        background-position: left center  , 20% 90% , 80% 90% ,15% 30% ;
+        position: relative;
+        .footer-content{
+            height: 100%;
+            .footer-title{
+                font-family: 'softwareTitle';
+                font-size: 1.5rem;
+                width: 30%;
+                color: #fff;
+        z-index: 1;
+            @media screen and (max-width: 992px) {
+                    width: 100%;
+                }
+            }
+            .btn-pruchase{
+                @include btn;
+            background-color:#FF1111;
+            }
+            .btn-support{
+                @include btn;
+            background-color:#22c55e;
+            }
+        }
+       .software-footer__img:nth-last-of-type(1){
+            position: absolute;
+            top: 5%;
+            left: 10%;
+        }
+       .software-footer__img:nth-last-of-type(2){
+            position: absolute;
+                    top: 30%;
+                        left: 0%;
+        }
+       .software-footer__img:nth-last-of-type(3){
+            position: absolute;
+            top: 5%;
+                right: 10%;        }
+       .software-footer__img:nth-last-of-type(4){
+            position: absolute;
+                top: 30%;
+                    right: 0;
+        }
+    }

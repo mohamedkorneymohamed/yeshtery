@@ -1,0 +1,30 @@
+.software-all-designs{
+    height: 100vh;
+    @media screen and (max-width: 576px) {
+            height: 25vh;
+        }
+    @media screen and (max-width: 992px) {
+            height: 50vh;
+        }
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        box-shadow: 119px -40px 149px 178px rgba(255, 73, 73, 0.2);
+    }
+    .curve-blue {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        z-index: -1;
+    }
+        
+    .curve-yellow {
+        position: absolute;
+        top: 25%;
+        left: 20%;
+        z-index: -1;
+    }
+}
