@@ -22,11 +22,10 @@ import {
   getLoggedUserCart,
   updateProductCount,
 } from "../../services/dataServices";
-import { ClipLoader } from "react-spinners";
 import AllProducts from "../../Components/AllProducts/AllProducts";
 import ProductsCart from "../../Components/ProductsCart/ProductsCart";
-import LazyLoading from "../../Components/LazyLoading/LazyLoading";
 import { Shimmer } from "react-shimmer";
+import ScrollToTop from "../../Components/ScrollToTop/ScrollToTop";
 
 export default function ProductDetails({
   addProductToCart,
@@ -81,6 +80,7 @@ export default function ProductDetails({
   }, []);
   return (
     <>
+      <ScrollToTop />
       <div className="product-details my-5">
         <div className="container">
           <div className="row align-items-center">
@@ -166,97 +166,105 @@ export default function ProductDetails({
                       width={70}
                       alt=""
                     />
-                <h3>{productDetails?.description}</h3>
-                <span className="rat-number">
-                  {productDetails?.ratingsAverage}
-                </span>
-                <span className="star-rat">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                </span>
-                <div className="price">{productDetails?.price} EGP</div>
-                <h5 className="desc">More Details:</h5>
-                <span className="desc-content">
-                  {productDetails?.description.split(" ").slice(1, 3).join(" ")}
-                </span>
-                <div className="img-cover">
-                  <img src={productDetails?.imageCover} width={70} alt="" />
-                </div>
-                <div className="quantity">
-                  <h5>Quantity:</h5>
-                  <div className="quantity-operation ">
-                    <div className="increment">
-                      <span
-                        className="mark-operation"
-                        onClick={() =>
-                          updateCount(
-                            productDetails?.id,
-                            getCartItemQuantity(
-                              cartDetails,
-                              productDetails?.id
-                            ) + 1
-                          )
-                        }
-                      >
-                        +
+                    <h3>{productDetails?.description}</h3>
+                    <span className="rat-number">
+                      {productDetails?.ratingsAverage}
+                    </span>
+                    <span className="star-rat">
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star-half-stroke"></i>
+                    </span>
+                    <div className="price">{productDetails?.price} EGP</div>
+                    <h5 className="desc">More Details:</h5>
+                    <span className="desc-content">
+                      {productDetails?.description
+                        .split(" ")
+                        .slice(1, 3)
+                        .join(" ")}
+                    </span>
+                    <div className="img-cover">
+                      <img src={productDetails?.imageCover} width={70} alt="" />
+                    </div>
+                    <div className="quantity">
+                      <h5>Quantity:</h5>
+                      <div className="quantity-operation ">
+                        <div className="increment">
+                          <span
+                            className="mark-operation"
+                            onClick={() =>
+                              updateCount(
+                                productDetails?.id,
+                                getCartItemQuantity(
+                                  cartDetails,
+                                  productDetails?.id
+                                ) + 1
+                              )
+                            }
+                          >
+                            +
+                          </span>
+                        </div>
+                        <div className="count">
+                          {getCartItemQuantity(cartDetails, productDetails?.id)}
+                        </div>
+                        <div className="decrement ">
+                          {getCartItemQuantity(
+                            cartDetails,
+                            productDetails?.id
+                          ) > 0 ? (
+                            <button
+                              className="btn mark-operation "
+                              onClick={() =>
+                                updateCount(
+                                  productDetails?.id,
+                                  getCartItemQuantity(
+                                    cartDetails,
+                                    productDetails?.id
+                                  ) - 1
+                                )
+                              }
+                            >
+                              -
+                            </button>
+                          ) : (
+                            <button className="btn mark-operation " disabled>
+                              -
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="cart pt-3">
+                      <div className="add-to-cart ">
+                        <button
+                          className="cart-btn"
+                          onClick={() => addProductToCart(productDetails.id)}
+                        >
+                          add to cart
+                        </button>
+                      </div>
+                      <span className="wishlist">
+                        <i className="fa-regular fa-heart"></i>
+                      </span>
+                      <span className="share">
+                        <i className="fa-solid fa-share-nodes"></i>{" "}
                       </span>
                     </div>
-                    <div className="count">
-                      {getCartItemQuantity(cartDetails, productDetails?.id)}
-                    </div>
-                    <div className="decrement ">
-                      {getCartItemQuantity(cartDetails, productDetails?.id) >
-                      0 ? (
-                        <button
-                          className="btn mark-operation "
-                          onClick={() =>
-                            updateCount(
-                              productDetails?.id,
-                              getCartItemQuantity(
-                                cartDetails,
-                                productDetails?.id
-                              ) - 1
-                            )
-                          }
-                        >
-                          -
-                        </button>
-                      ) : (
-                        <button className="btn mark-operation " disabled>
-                          -
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="cart pt-3">
-                  <div className="add-to-cart ">
-                    <button
-                      className="cart-btn"
-                      onClick={() => addProductToCart(productDetails.id)}
-                    >
-                      add to cart
-                    </button>
-                  </div>
-                  <span className="wishlist">
-                    <i className="fa-regular fa-heart"></i>
-                  </span>
-                  <span className="share">
-                    <i className="fa-solid fa-share-nodes"></i>{" "}
-                  </span>
-                </div>
                   </>
                 )}
-
               </div>
             </div>
           </div>
         </div>
       </div>
-      <AllProducts setProductDetails={setProductDetails} />
+      <AllProducts
+        setProductDetails={setProductDetails}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      />
       <ProductsCart
         cartDetails={cartDetails}
         setCartDetails={setCartDetails}

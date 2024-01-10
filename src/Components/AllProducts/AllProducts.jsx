@@ -11,11 +11,14 @@ import {
   Navigation,
 } from "swiper/modules";
 
-export default function AllProducts({ setProductDetails }) {
+export default function AllProducts({ setProductDetails, isLoading, setIsLoading }) {
   const [allProduct, setAllProduct] = useState(null);
   const productDetails = async (id) => {
-   let data =  await getProductDetails(id);
+    setIsLoading(true)
+    let data = await getProductDetails(id);
     setProductDetails(data.data);
+        setIsLoading(false);
+
   };
   const getProducts = async () => {
     const data = await getAllProducts();
