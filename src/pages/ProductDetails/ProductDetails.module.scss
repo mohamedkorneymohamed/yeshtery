@@ -51,7 +51,7 @@
     
   
           .swiper-button-prev {
-              background-image: url('../../images/left-arrow.svg');
+              background-image: url('../../images/left.png');
               background-repeat: no-repeat;
               background-position: center center;
               border-radius: 50%;
@@ -60,14 +60,14 @@
               transition: 1s;
               background-color: rgb(204 204 204 / 26%);
               left: 0;
-    
+                background-size:80%;
               &:hover {
                   background-color: $primary;
               }
           }
     
           .swiper-button-next {
-              background-image: url('../../images/right-arrow.svg');
+              background-image: url('../../images/right.png');
               background-position: center center;
               background-repeat: no-repeat;
               background-color: rgb(204 204 204 / 26%);
@@ -76,7 +76,7 @@
               height: 2.7rem;
               transition: 1s;
               right: 0;
-    
+    background-size:80%;
               &:hover {
                   background-color: $primary;
               }
@@ -106,11 +106,14 @@
         border: 1px solid $border;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         width: 25%;
         overflow: hidden;
         padding: 5px;
         border-radius: 10px;
-        
+        @media screen and (max-width: 1200px) {
+                width: 45%;
+            }
      .mark-operation{
          padding: 5px 10px;
          display: inline-block;
@@ -129,6 +132,18 @@
         align-items: center;
         justify-content: space-between;
         width: 45%;
+        @media screen and (max-width: 1200px) {
+        width: 70%;
+                }
+        @media screen and (max-width: 1200px) {
+        width: 75%;
+                }
+        @media screen and (max-width: 767px) {
+        width: 60%;
+                }
+        @media screen and (max-width: 568px) {
+        width: 75%;
+                }
         .cart-btn{
             background-color: $secondary;
                     color: $light-dark;

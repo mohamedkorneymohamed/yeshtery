@@ -6,14 +6,9 @@ export default function Navbar({ cartNumber, setSidebarAnimation }) {
       <nav className="navbar navbar-expand-lg navbar-light ">
         <div className="container">
           <a className="navbar-brand" href="#">
-            <div className="row">
-              <div className="col-6">
-                <i className="fa-solid fa-bars-staggered text-dark"></i>
-              </div>
-              <div className="col-6">
-                <img src="/images/brand_logo_black.svg" />
-              </div>
-            </div>
+                <img
+                  src={process.env.PUBLIC_URL + "/images/brand_logo_black.svg"}
+                />
           </a>
           <button
             className="navbar-toggler"
@@ -28,7 +23,7 @@ export default function Navbar({ cartNumber, setSidebarAnimation }) {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0 align-items-center">
-              <li className="nav-item text-center mx-md-5">
+              <li className="nav-item text-center ms-md-3">
                 <i className="fa-solid fa-chevron-left p-2"></i>
                 <span>
                   Valentine's Day Offers! Buy Two Get One Free{" "}
@@ -78,7 +73,10 @@ export default function Navbar({ cartNumber, setSidebarAnimation }) {
             <div className="col-md-7 pt-3 pt-md-0">
               <ul className="list-inline text-center">
                 <li className="list-inline-item mx-3">
-                  <div className="cart" onClick={() => setSidebarAnimation(true)}>
+                  <div
+                    className="cart"
+                    onClick={() => setSidebarAnimation(true)}
+                  >
                     <i className="fa-brands fa-opencart"></i>
                     <span className="px-1">Cart</span>
                     <div className="numberOfCart">{cartNumber}</div>
@@ -101,12 +99,12 @@ export default function Navbar({ cartNumber, setSidebarAnimation }) {
       <div className="drowpdown-Nav bg-dark py-4 ">
         <div className="container">
           <ul className="list-inline text-center m-0">
-            <li className="list-inline-item text-light mx-5">Men</li>
-            <li className="list-inline-item text-light mx-5">Women</li>
-            <li className="list-inline-item text-light mx-5">Unisex</li>
-            <li className="list-inline-item text-light mx-5">Kids</li>
-            <li className="list-inline-item text-light mx-5">Best Sellers</li>
-            <li className="list-inline-item text-light mx-5">New Arrivals</li>
+            <li className="list-inline-item text-light mx-2 mx-md-4 mx-lg-5">Men</li>
+            <li className="list-inline-item text-light mx-2 mx-md-4 mx-lg-5">Women</li>
+            <li className="list-inline-item text-light mx-2 mx-md-4 mx-lg-5">Unisex</li>
+            <li className="list-inline-item text-light mx-2 mx-md-4 mx-lg-5">Kids</li>
+            <li className="list-inline-item text-light mx-2 mx-md-4 mx-lg-5">Best Sellers</li>
+            <li className="list-inline-item text-light mx-2 mx-md-4 mx-lg-5">New Arrivals</li>
           </ul>
         </div>
       </div>

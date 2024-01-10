@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts, getProductDetails  } from "../../services/dataServices";
+import { getAllProducts, getProductDetails } from "../../services/dataServices";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/pagination";
 import {
@@ -11,14 +11,17 @@ import {
   Navigation,
 } from "swiper/modules";
 
-export default function AllProducts({ setProductDetails, isLoading, setIsLoading }) {
+export default function AllProducts({
+  setProductDetails,
+  isLoading,
+  setIsLoading,
+}) {
   const [allProduct, setAllProduct] = useState(null);
   const productDetails = async (id) => {
-    setIsLoading(true)
+    setIsLoading(true);
     let data = await getProductDetails(id);
     setProductDetails(data.data);
-        setIsLoading(false);
-
+    setIsLoading(false);
   };
   const getProducts = async () => {
     const data = await getAllProducts();
@@ -48,12 +51,8 @@ export default function AllProducts({ setProductDetails, isLoading, setIsLoading
           freeMode={true}
           centeredSlides={true}
           navigation={true}
-          // autoplay={{
-          //   delay:0,
-          //   disableOnInteraction: false,
-          // }}
           loop={true}
-          className="product-swiper pt-3 "
+          className="product-swiper py-5 "
         >
           {allProduct?.map((product) => (
             <SwiperSlide
@@ -62,7 +61,12 @@ export default function AllProducts({ setProductDetails, isLoading, setIsLoading
               onClick={() => productDetails(product.id)}
             >
               <div className="product-img">
-                <img src={product?.imageCover} className="img-fluid" alt="" />
+                <img
+                  src={product?.imageCover}
+                  height={300}
+                  className="w-100"
+                  alt=""
+                />
               </div>
               <div className="card-title text-center ">
                 <span>{product?.title?.split(" ").slice(1, 3).join(" ")}</span>
@@ -72,7 +76,12 @@ export default function AllProducts({ setProductDetails, isLoading, setIsLoading
                   <span>{product?.price} EGP</span>
                 </div>
                 <div className="category-img">
-                  <img src={product?.imageCover} width={30} alt="" />
+                  <img
+                    src={product?.imageCover}
+                    height={50}
+                    width={30}
+                    alt=""
+                  />
                 </div>
               </div>
               <div className="rat text-start">

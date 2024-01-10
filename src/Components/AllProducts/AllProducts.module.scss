@@ -18,25 +18,28 @@
     }
     .product-swiper{
         .swiper-slide{
-            width: 15%;
+            width: 20%;
             text-align: center;
             font-size: 18px;
             align-items: center;
             transition: .5s;
             cursor: pointer;
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 992px) {
                     width:40%;
+                }
+            @media screen and (max-width: 400px) {
+                    width:60%;
                 }
                 padding: 10px;
                 border-radius: 30px;
                 border: 1px solid $border;
                 .card-title{
-                    font-size: 1.5rem;
+                    font-size: 1.2rem;
                     color: $secondary;
                 }
         }
         .swiper-button-prev {
-            background-image: url('../../images/left-arrow.svg');
+            background-image: url('../../images/left.png');
             background-repeat: no-repeat;
             background-position: center center;
             border-radius: 50%;
@@ -45,14 +48,14 @@
             transition: 1s;
             background-color: rgb(204 204 204 / 26%);
             left: 0;
-            
+            background-size:80%;
             &:hover {
                 background-color: $primary;
             }
         }
             
         .swiper-button-next {
-            background-image: url('../../images/right-arrow.svg');
+            background-image: url('../../images/right.png');
             background-position: center center;
             background-repeat: no-repeat;
             background-color: rgb(204 204 204 / 26%);
@@ -61,7 +64,7 @@
             height: 2.7rem;
             transition: 1s;
             right: 0;
-            
+            background-size:80%;
             &:hover {
                 background-color: $primary;
             }

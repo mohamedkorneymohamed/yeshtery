@@ -64,6 +64,9 @@
                 color: $light-dark;
                 line-height: 2;
                 font-weight: 600;
+                    @media screen and (max-width: 568px) {
+                line-height: 3;
+                                    }
             }
         }
     }
@@ -71,6 +74,9 @@
         .social-link{
             line-height: 2.8;
             color: $light-dark;
+                @media screen and (max-width: 568px) {
+                        line-height: 4;
+                    }
         }
     }
     .copy-right{

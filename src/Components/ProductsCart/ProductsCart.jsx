@@ -34,11 +34,11 @@ export default function ProductsCart({
       >
         <div className="row">
           <div
-            className="col-md-8 col-5 "
+            className="col-md-8 col-3 "
             onClick={() => setSidebarAnimation(false)}
           ></div>
-          <div className="col-md-4 col-7 px-0">
-            <div className="cart">
+          <div className="col-md-4 col-9 px-0">
+            <div className="cart p-4">
                 <div
                   className="close-img text-end"
                   onClick={() => setSidebarAnimation(false)}

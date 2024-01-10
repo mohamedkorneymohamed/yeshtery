@@ -165,7 +165,7 @@ export default function ProductDetails({
                       width={70}
                       alt=""
                     />
-                    <h3>{productDetails?.description}</h3>
+                    <h3 className="py-4">{productDetails?.description}</h3>
                     <span className="rat-number">
                       {productDetails?.ratingsAverage}
                     </span>
@@ -187,7 +187,7 @@ export default function ProductDetails({
                     <div className="img-cover">
                       <img src={productDetails?.imageCover} width={70} alt="" />
                     </div>
-                    <div className="quantity">
+                    <div className="quantity py-3">
                       <h5>Quantity:</h5>
                       <div className="quantity-operation ">
                         <div className="increment">
