@@ -1,0 +1,35 @@
+.navbar{
+    background-color: $primary;
+}
+.filteration-nav{
+    .filter{
+        .search-product{
+            padding: 10px;
+            border: 1px solid ;
+            border-color:$border ;
+            border-radius: 30px;
+            width: 100%;
+            box-shadow: 0px 0px 10px 1px $border;
+            .input-text{
+                width: 100%;
+                & :first-child{
+                    border-color: transparent;
+                    outline-style: none;
+                    border-radius: 30px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .cart{
+        position: relative;
+        cursor: pointer;
+        .numberOfCart{
+            position: absolute;
+            left: 10%;
+            top: -55%;
+            color: red;
+
+        }
+    }
+}

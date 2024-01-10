@@ -1,9 +1,17 @@
-import React from 'react'
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom'
-export default function Layout() {
+import { addToCart } from '../../services/dataServices';
+import Footer from '../Footer/Footer'
+import Navbar from '../Navbar/Navbar'
+export default function Layout({ cartNumber, setCartDetails, setSidebarAnimation }) {
   return (
-<>
-<Outlet></Outlet>
-</>
-    )
+    <>
+      <Navbar
+        cartNumber={cartNumber}
+        setSidebarAnimation={setSidebarAnimation}
+      />
+      <Outlet></Outlet>
+      <Footer />
+    </>
+  );
 }

@@ -1,0 +1,84 @@
+    .swiper {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        img {
+            border-radius: 20px;
+        }
+    }
+
+    .mySwiper2 {
+        height: 70%;
+        width: 100%;
+
+    }
+
+    .mySwiper {
+        height: 30%;
+        box-sizing: border-box;
+        padding: 10px 0;
+
+        .swiper-slide {
+            width: 25%;
+            height: 100%;
+            opacity: 0.4;
+            cursor: pointer;
+
+            .shimer {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .swiper-slide-thumb-active {
+            opacity: 1;
+
+        }
+    }
+
+
+
+    .swiper-button-prev {
+        background-image: url('../../images/left-arrow.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        border-radius: 50%;
+        width: 2.7rem;
+        height: 2.7rem;
+        transition: 1s;
+        background-color: rgb(204 204 204 / 26%);
+        left: 0;
+
+        &:hover {
+            background-color: $primary;
+        }
+    }
+
+    .swiper-button-next {
+        background-image: url('../../images/right-arrow.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: rgb(204 204 204 / 26%);
+        border-radius: 50%;
+        width: 2.7rem;
+        height: 2.7rem;
+        transition: 1s;
+        right: 0;
+
+        &:hover {
+            background-color: $primary;
+        }
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        content: "";
+    }

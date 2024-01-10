@@ -1,11 +1,16 @@
-@import "swiper/css";
-@import'./software';
-@import'./it-solution';
-@import'../../Components/ScrollToTop/ScrollToTop.module.scss';
-@import'../../Components/MasterPage/FloatinDiv/FloatinDiv.module';
-@import'../../pages/Home/Home.module';
-@import'../../Components/MasterPage/Navbar/Navbar.module';
-@import'../../Components/SoftwareComponents/SoftwareNavbar/SoftwareNavbar.module';
+
+// Container Of Scss Components
+@import'./navbar';
+@import'./footer';
+@import'../../Components/LazyLoading/LazyLoading.module.scss';
+@import'../../Components/ProductsCart/ProductsCart.module.scss';
+@import'../../Components/AllProducts/AllProducts.module.scss';
+@import'../../pages/ProductDetails/ProductDetails.module.scss';
+
+
+
+// main style 
+
 #root {
     height: 100%;
 ul,a{
@@ -29,10 +34,7 @@ body {
       @media screen and (max-width: 576px) {
           font-size: 3vw;
       }
-}
-body {
     font-size: 14px;
-    color: #000;
-    margin: 0;  
+    margin: 0;
     padding: 0;
 }
