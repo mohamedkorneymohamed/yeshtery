@@ -80,7 +80,6 @@ export default function ProductDetails({
   }, []);
   return (
     <>
-      <ScrollToTop />
       <div className="product-details my-5">
         <div className="container">
           <div className="row align-items-center">
