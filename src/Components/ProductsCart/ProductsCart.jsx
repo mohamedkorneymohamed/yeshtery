@@ -38,7 +38,7 @@ export default function ProductsCart({
             onClick={() => setSidebarAnimation(false)}
           ></div>
           <div className="col-md-4 col-9 px-0">
-            <div className="cart p-4">
+            <div className="cart p-5">
                 <div
                   className="close-img text-end"
                   onClick={() => setSidebarAnimation(false)}

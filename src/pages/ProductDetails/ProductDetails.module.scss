@@ -31,7 +31,7 @@
     .mySwiper{
         height: 30%;
         box-sizing: border-box;
-        padding: 10px 0;
+        padding: 10px 28px;
         .swiper-slide{
             width: 25%;
             height: 100%;
@@ -124,6 +124,13 @@
          text-align: center;
          color: $light-dark;
          cursor: pointer;
+         position: relative;
+         .Arithmetic-mark{
+             position: absolute;
+             left: 50%;
+             top: 50%;
+             transform: translate(-50% , -50%);
+         }
      }
     }
     .cart{

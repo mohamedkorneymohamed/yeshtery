@@ -89,7 +89,7 @@ export default function ProductDetails({
                 thumbs={{ swiper: thumbsSwiper }}
                 modules={[FreeMode, Navigation, Thumbs, Autoplay]}
                 autoplay={{
-                  delay: 2500,
+                  delay: 2000,
                   disableOnInteraction: false,
                 }}
                 speed={2500}
