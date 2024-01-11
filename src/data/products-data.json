@@ -1,19 +1,68 @@
-{
-  "products": [
     {
-      "id": 1,
-      "name": "Product 1",
-      "price": 20
-    },
-    {
-      "id": 2,
-      "name": "Product 2",
-      "price": 30
-    },
-    {
-      "id": 3,
-      "name": "Product 3",
-      "price": 25
-    }
-  ]
-}
+    "products": [
+      {
+        "id": 1,
+        "images": [
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838330-1.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838331-3.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838332-4.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838331-2.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838332-5.jpeg"
+        ],
+        "brand": "/src/images/productA(7).png",
+        "price": 1079,
+        "rat": "No Rating Yet",
+        "color": "LEGINK",
+        "coverImage": "/src/images/productA(6).png",
+        "size": "L"
+      },
+      {
+        "id": 1,
+        "images": [
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838330-1.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838331-3.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838332-4.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838331-2.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838332-5.jpeg"
+        ],
+        "brand": "/src/images/productA(7).png",
+        "price": 998,
+        "rat": "No Rating Yet",
+        "color": "LEGINK",
+        "coverImage": "/src/images/productA(6).png",
+        "size": "L"
+      },
+      {
+        "id": 1,
+        "images": [
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838330-1.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838331-3.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838332-4.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838331-2.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838332-5.jpeg"
+        ],
+        "brand": "/src/images/productA(7).png",
+        "price": 3123,
+        "rat": "No Rating Yet",
+        "color": "LEGINK",
+        "coverImage": "/src/images/productA(6).png",
+        "size": "L"
+      },
+      {
+        "id": 1,
+        "images": [
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838330-1.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838331-3.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838332-4.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838331-2.jpeg",
+          "https://ecommerce.routemisr.com/Route-Academy-products/1680402838332-5.jpeg"
+        ],
+        "brand": "/src/images/productA(7).png",
+        "price": 4421,
+        "rat": "No Rating Yet",
+        "color": "LEGINK",
+        "coverImage": "/src/images/productA(6).png",
+        "size": "L"
+      }
+    ]
+  }

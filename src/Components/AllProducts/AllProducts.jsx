@@ -1,3 +1,11 @@
+// import React, { Component } from "react";
+
+// export default class AllProducts extends Component {
+//   render() {
+//     return <div>AllProducts</div>;
+//   }
+// }
+
 import React, { useEffect, useState } from "react";
 import { getAllProducts, getProductDetails } from "../../services/dataServices";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,27 +19,7 @@ import {
   Navigation,
 } from "swiper/modules";
 
-export default function AllProducts({
-  setProductDetails,
-  isLoading,
-  setIsLoading,
-}) {
-  const [allProduct, setAllProduct] = useState(null);
-  const productDetails = async (id) => {
-    setIsLoading(true);
-    let data = await getProductDetails(id);
-    setProductDetails(data.data);
-    setIsLoading(false);
-  };
-  const getProducts = async () => {
-    const data = await getAllProducts();
-    setAllProduct(data.data.data);
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
+export default function AllProducts() {
   return (
     <>
       <div className="products">
@@ -54,48 +42,31 @@ export default function AllProducts({
           loop={true}
           className="product-swiper py-5 "
         >
-          {allProduct?.map((product) => (
-            <SwiperSlide
-              key={product?._id}
-              width={20}
-              onClick={() => productDetails(product.id)}
-            >
-              <div className="product-img">
-                <img
-                  src={product?.imageCover}
-                  height={300}
-                  className="w-100"
-                  alt=""
-                />
+          <SwiperSlide width={20}>
+            <div className="product-img">
+              <img src="" height={300} className="w-100" alt="" />
+            </div>
+            <div className="card-title text-center ">
+              <span></span>
+            </div>
+            <div className="product-content d-flex justify-content-between align-items-center pt-3">
+              <div className="price">
+                <span> EGP</span>
               </div>
-              <div className="card-title text-center ">
-                <span>{product?.title?.split(" ").slice(1, 3).join(" ")}</span>
+              <div className="category-img">
+                <img src="" height={50} width={30} alt="" />
               </div>
-              <div className="product-content d-flex justify-content-between align-items-center pt-3">
-                <div className="price">
-                  <span>{product?.price} EGP</span>
-                </div>
-                <div className="category-img">
-                  <img
-                    src={product?.imageCover}
-                    height={50}
-                    width={30}
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="rat text-start">
-                <span>
-                  {product?.ratingsAverage}
-                  <span className="star-rat">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star-half-stroke"></i>
-                  </span>
+            </div>
+            <div className="rat text-start">
+              <span>
+                <span className="star-rat">
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-solid fa-star-half-stroke"></i>
                 </span>
-              </div>
-            </SwiperSlide>
-          ))}
+              </span>
+            </div>
+          </SwiperSlide>
         </Swiper>
       </div>
     </>
