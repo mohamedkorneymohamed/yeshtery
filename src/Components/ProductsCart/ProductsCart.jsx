@@ -9,15 +9,10 @@ export default function ProductsCart({
   sidebarAnimation,
   setSidebarAnimation,
   userCart,
+  deleteProduct
 }) {
-  async function deleteProduct(productId) {
-    let response = await deleteCartDetails(productId);
-    setCartDetails(response.data.data);
-    setCartNumber(response.data.numOfCartItems);
-  }
-
   useEffect(() => {
-    userCart()
+    userCart();
     // Call changeStyleBody when sidebarAnimation changes
     changeStyleBody();
   }, [sidebarAnimation]);
@@ -39,54 +34,51 @@ export default function ProductsCart({
           ></div>
           <div className="col-md-4 col-9 px-0">
             <div className="cart p-5">
-                <div
-                  className="close-img text-end"
-                  onClick={() => setSidebarAnimation(false)}
-                >
-                  <img src={close} alt="" />
-                </div>
-                <div className="cart-title text-center">
-                  <h3>My Cart</h3>
-                </div>
-                <div className="cart-sub-title">
-                  <span>Cart Summary</span>
-                </div>
-                {cartDetails?.products?.map((product) => (
-                  <div
-                    className="product-container"
-                    key={product?.product?._id}
-                  >
-                    <div className="product-info">
-                      <div className="product-img">
-                        <img
-                          src={product.product.imageCover}
-                          className="w-25"
-                        ></img>
-                      </div>
-                      <div className="product-title">
-                        <span>{product?.product?.title}</span>
-                      </div>
+              <div
+                className="close-img text-end"
+                onClick={() => setSidebarAnimation(false)}
+              >
+                <img src={close} alt="" />
+              </div>
+              <div className="cart-title text-center">
+                <h3>My Cart</h3>
+              </div>
+              <div className="cart-sub-title">
+                <span>Cart Summary</span>
+              </div>
+              {cartDetails?.products?.map((product) => (
+                <div className="product-container" key={product?.product?._id}>
+                  <div className="product-info">
+                    <div className="product-img">
+                      <img
+                        src={product.product.imageCover}
+                        className="w-25"
+                      ></img>
                     </div>
-                    <div className="count ">
-                      <span>Quantity:{product.count}</span>
-                    </div>
-                    <div className="price ">
-                      <span>Price:{product.price}</span>
-                    </div>
-                    <div className="remove-from-cart mt-2 text-end ">
-                      <button
-                        className="remove-btn"
-                        onClick={() => deleteProduct(product?.product?._id)}
-                      >
-                        remove
-                      </button>
+                    <div className="product-title">
+                      <span>{product?.product?.title}</span>
                     </div>
                   </div>
-                ))}
-                <div className="total-price">
-                  <span>Total Price :</span>
-                  <span>{cartDetails?.totalCartPrice}</span>
+                  <div className="count ">
+                    <span>Quantity:{product.count}</span>
+                  </div>
+                  <div className="price ">
+                    <span>Price:{product.price}</span>
+                  </div>
+                  <div className="remove-from-cart mt-2 text-end ">
+                    <button
+                      className="remove-btn"
+                      onClick={() => deleteProduct(product?.product?._id)}
+                    >
+                      remove
+                    </button>
+                  </div>
                 </div>
+              ))}
+              <div className="total-price">
+                <span>Total Price :</span>
+                <span>{cartDetails?.totalCartPrice}</span>
+              </div>
             </div>
           </div>
         </div>

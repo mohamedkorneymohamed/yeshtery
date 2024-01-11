@@ -73,6 +73,7 @@ notifySuccess(data?.data.message);
               setCartNumber={setCartNumber}
               setSidebarAnimation={setSidebarAnimation}
               sidebarAnimation={sidebarAnimation}
+              cartNumber={cartNumber}
             />
           ),
         },

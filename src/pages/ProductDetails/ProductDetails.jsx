@@ -21,6 +21,7 @@ import {
   sendLoginData,
   getLoggedUserCart,
   updateProductCount,
+  deleteCartDetails,
 } from "../../services/dataServices";
 import AllProducts from "../../Components/AllProducts/AllProducts";
 import ProductsCart from "../../Components/ProductsCart/ProductsCart";
@@ -35,6 +36,7 @@ export default function ProductDetails({
   setCartNumber,
   sidebarAnimation,
   setSidebarAnimation,
+  cartNumber,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   // THIS FUNCTION IN TASK
@@ -42,9 +44,25 @@ export default function ProductDetails({
     const productInCart = cartDetails?.products?.find(
       (product) => product.product._id === productId
     );
+
     return productInCart ? productInCart.count : 0;
   }
+  async function deleteProduct(productId) {
+    let response = await deleteCartDetails(productId);
+    setCartDetails(response.data.data);
+    setCartNumber(response.data.numOfCartItems);
+  }
+  const addProductToCartAndUpdateCount = async (productId) => {
+    // Call the function to add the product to the cart
+    await addProductToCart(productId);
 
+    // Fetch the updated cart details
+    const updatedCart = await getLoggedUserCart();
+
+    // Update the cart details and cart count in the component state
+    setCartDetails(updatedCart?.data?.data);
+    setCartNumber(updatedCart?.data?.data.products.length);
+  };
   const updateCount = async (productId, count) => {
     const response = await updateProductCount(productId, count);
     setCartDetails(response?.data?.data);
@@ -191,7 +209,7 @@ export default function ProductDetails({
                       <h5>Quantity:</h5>
                       <div className="quantity-operation ">
                         <div className="increment">
-                          <span
+                          <button
                             className="mark-operation"
                             onClick={() =>
                               updateCount(
@@ -203,8 +221,8 @@ export default function ProductDetails({
                               )
                             }
                           >
-                            +
-                          </span>
+                            <span className="Arithmetic-mark">+</span>
+                          </button>
                         </div>
                         <div className="count">
                           {getCartItemQuantity(cartDetails, productDetails?.id)}
@@ -226,11 +244,11 @@ export default function ProductDetails({
                                 )
                               }
                             >
-                              -
+                              <span className="Arithmetic-mark">-</span>
                             </button>
                           ) : (
                             <button className="btn mark-operation " disabled>
-                              -
+                              <span className="Arithmetic-mark">-</span>
                             </button>
                           )}
                         </div>
@@ -240,7 +258,9 @@ export default function ProductDetails({
                       <div className="add-to-cart ">
                         <button
                           className="cart-btn"
-                          onClick={() => addProductToCart(productDetails.id)}
+                          onClick={() =>
+                            addProductToCartAndUpdateCount(productDetails.id)
+                          }
                         >
                           add to cart
                         </button>
@@ -271,6 +291,7 @@ export default function ProductDetails({
         sidebarAnimation={sidebarAnimation}
         setSidebarAnimation={setSidebarAnimation}
         userCart={userCart}
+        deleteProduct={deleteProduct}
       />
     </>
   );
