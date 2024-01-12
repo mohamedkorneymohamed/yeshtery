@@ -1,101 +1,99 @@
 .product-details{
-
-    .main-swiper-container {
-        width: 100%;
-        height: 300px;
-        .swiper-wrapper{
-        box-sizing: initial;
-        display: flex;
-        height: 100%;
-        position: relative;
-        transition-property: -webkit-transform;
-        transition-property: transform;
-        transition-property: transform, -webkit-transform;
-        transition-timing-function: ease;
-        transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
-        width: 100%;
-        z-index: 1;
+    .swiper {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+    
+            .swiper-slide {
+                background-size: cover;
+                background-position: center;
+                text-align: center;
+    
+                .shimmer {
+                    width: 100%;
+                    height: 100%;
+                }
+    
+                .shimmer2 {
+                    width: 50%;
+                    height: 50%;
+                }
+            }
+    
+            img {
+                border-radius: 20px;
+            }
         }
-        .swiper-slide{
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            .shimmer{
-                width: 100%;
+    
+        .mySwiper2 {
+            height: 70%;
+            width: 100%;
+    
+        }
+    
+        .mySwiper {
+            height: 30%;
+            box-sizing: border-box;
+            padding: 10px 28px;
+    
+            .swiper-slide {
+                width: 25%;
                 height: 100%;
-            }
-            .shimmer2{
-                width: 50%;
-                height: 50%;
-            }
-        }
-        img{
-            border-radius: 20px;
-        }
-    }
-    .mySwiper2 {
-        height: 70%;
-        width: 100%;
+                opacity: 0.4;
+                cursor: pointer;
     
-    }
+                .shimer {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
     
-    .mySwiper{
-        height: 30%;
-        box-sizing: border-box;
-        padding: 10px 0;
-        .swiper-slide{
-            width: 25%;
-            height: 100%;
-            opacity: 0.4;
-            cursor: pointer;
-            .shimer{
-                width: 100%;
-                height: 100%;
+            .swiper-slide-thumb-active {
+                opacity: 1;
+    
             }
         }
-        .swiper-slide-thumb-active{
-            opacity: 1;
     
+    
+    
+        .swiper-button-prev {
+            background-image: url('../../images/left.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 50%;
+            width: 2.7rem;
+            height: 2.7rem;
+            transition: 1s;
+            background-color: rgb(204 204 204 / 26%);
+            left: 0;
+            background-size: 80%;
+    
+            &:hover {
+                background-color: $primary;
+            }
         }
-    }
     
+        .swiper-button-next {
+            background-image: url('../../images/right.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: rgb(204 204 204 / 26%);
+            border-radius: 50%;
+            width: 2.7rem;
+            height: 2.7rem;
+            transition: 1s;
+            right: 0;
+            background-size: 80%;
     
-  
-          .swiper-button-prev {
-              background-image: url('../../images/left.png');
-              background-repeat: no-repeat;
-              background-position: center center;
-              border-radius: 50%;
-              width: 2.7rem;
-              height: 2.7rem;
-              transition: 1s;
-              background-color: rgb(204 204 204 / 26%);
-              left: 0;
-                background-size:80%;
-              &:hover {
-                  background-color: $primary;
-              }
-          }
+            &:hover {
+                background-color: $primary;
+            }
+        }
     
-          .swiper-button-next {
-              background-image: url('../../images/right.png');
-              background-position: center center;
-              background-repeat: no-repeat;
-              background-color: rgb(204 204 204 / 26%);
-              border-radius: 50%;
-              width: 2.7rem;
-              height: 2.7rem;
-              transition: 1s;
-              right: 0;
-    background-size:80%;
-              &:hover {
-                  background-color: $primary;
-              }
-          }
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-        content: "";
-    }
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            content: "";
+        }
     .category-content{
         .rat-number{
             font-size: 1.5rem;

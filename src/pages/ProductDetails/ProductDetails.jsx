@@ -1,22 +1,26 @@
 import React, { Component } from "react";
 import Swiper from "swiper/bundle";
 import "swiper/swiper-bundle.css";
+import dataServices, { fetchData } from '../../services/dataServices'
 import ss from "../../images/productA(3).jpg";
+import dd from "../../images/productA(1).jpg";
+
 class ProductDetails extends Component {
+
+
+
   componentDidMount() {
     // Initialize Swiper
     this.mainSwiper = new Swiper(".main-swiper-container", {
       loop: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
+      autoplay:true,
+      className: "mySwiper2"
     });
-
+      
     this.thumbsSwiper = new Swiper(".thumbs-swiper-container", {
-      slidesPerView: "1",
+      slidesPerView: "auto",
       spaceBetween: 10,
-      loop: true,
+      loop: false,
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -29,7 +33,9 @@ class ProductDetails extends Component {
       thumbs: {
         swiper: this.mainSwiper,
       },
+      className: "mySwiper",
     });
+
   }
 
   render() {
@@ -39,8 +45,14 @@ class ProductDetails extends Component {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-md-6">
-                <div className="main-swiper-container">
+                <div className="main-swiper-container swiper">
                   <div className="swiper-wrapper">
+                    <div className="swiper-slide">
+                      <img src={ss} alt="" className="w-50" />
+                    </div>
+                    <div className="swiper-slide">
+                      <img src={ss} alt="" className="w-50" />
+                    </div>
                     <div className="swiper-slide">
                       <img src={ss} alt="" className="w-50" />
                     </div>
@@ -56,22 +68,27 @@ class ProductDetails extends Component {
 
                     {/* Add more main slides as needed */}
                   </div>
-                  <div className="swiper-button-next"></div>
-                  <div className="swiper-button-prev"></div>
+              
                 </div>
-                <div className="thumbs-swiper-container">
+                <div className="thumbs-swiper-container swiper">
                   <div className="swiper-wrapper">
                     <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
+                      <img src={dd} alt="" className="w-100" />
                     </div>
                     <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
+                      <img src={dd} alt="" className="w-100" />
                     </div>
                     <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
+                      <img src={dd} alt="" className="w-100" />
                     </div>
                     <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
+                      <img src={dd} alt="" className="w-100" />
+                    </div>
+                    <div className="swiper-slide">
+                      <img src={dd} alt="" className="w-100" />
+                    </div>
+                    <div className="swiper-slide">
+                      <img src={dd} alt="" className="w-100" />
                     </div>
                     {/* Add more thumb slides as needed */}
                   </div>
@@ -125,7 +142,7 @@ class ProductDetails extends Component {
                       <i className="fa-regular fa-heart"></i>
                     </span>
                     <span className="share">
-                      <i className="fa-solid fa-share-nodes"></i>{" "}
+                      <i className="fa-solid fa-share-nodes"></i>
                     </span>
                   </div>
                 </div>
