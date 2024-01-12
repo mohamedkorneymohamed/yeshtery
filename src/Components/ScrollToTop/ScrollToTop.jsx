@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-export default function ScrollToTop({ style }) {
+export default function ScrollToTop() {
   const [scrollUp, setScrollUp] = useState(false);
   // scroll to top
   function ScrollToTop() {
@@ -13,7 +13,7 @@ export default function ScrollToTop({ style }) {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY >= 400) {
+      if (window.scrollY >= 50) {
         setScrollUp(true);
       } else {
         setScrollUp(false);
@@ -24,9 +24,9 @@ export default function ScrollToTop({ style }) {
   return (
     <>
       {scrollUp ? (
-        <div className={style} onClick={ScrollToTop}>
+        <div className="scroll-content" onClick={ScrollToTop}>
           <span className="scroll-to-top__content">
-            <i class="fa-regular fa-hand-pointer"></i>
+            <i className="fa-regular fa-hand-pointer"></i>
           </span>
         </div>
       ) : (
