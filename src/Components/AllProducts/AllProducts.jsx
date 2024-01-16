@@ -1,15 +1,7 @@
-// import React, { Component } from "react";
-
-// export default class AllProducts extends Component {
-//   render() {
-//     return <div>AllProducts</div>;
-//   }
-// }
-
-import React, { useEffect, useState } from "react";
-import { getAllProducts, getProductDetails } from "../../services/dataServices";
+import React, { Component } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/pagination";
+import productsData from "../../data/products-data.json";
 import {
   Pagination,
   Mousewheel,
@@ -18,10 +10,28 @@ import {
   FreeMode,
   Navigation,
 } from "swiper/modules";
+import productsDatw from "../../data/products-data.json";
 
-export default function AllProducts() {
-  return (
-    <>
+class AllProducts extends Component {
+  // ... your existing code
+  // componentDidMount() {
+  //   try {
+  //     this.mainSwiper = new Swiper(".main-swiper-container", {
+  //       loop: true,
+  //       className: "mySwiper2 ",
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+  productDetails(productId) {
+   let newProducts = [...productsDatw.products];
+    newProducts = newProducts.filter((product) => product.id !== productId);
+    this.setState({ products: newProducts });
+    console.log(productsDatw);
+  }
+  render() {
+    return (
       <div className="products">
         <div className="container mb-3">
           <div className="products-title">
@@ -42,33 +52,26 @@ export default function AllProducts() {
           loop={true}
           className="product-swiper py-5 "
         >
-          <SwiperSlide width={20}>
-            <div className="product-img">
-              <img src="" height={300} className="w-100" alt="" />
-            </div>
-            <div className="card-title text-center ">
-              <span></span>
-            </div>
-            <div className="product-content d-flex justify-content-between align-items-center pt-3">
-              <div className="price">
-                <span> EGP</span>
+          {productsData?.products.map((product) => (
+            <SwiperSlide
+              key={product?.id}
+              width={20}
+              onClick={() => this.productDetails(product.id)}
+            >
+              <div className="product-img">
+                <img
+                  src={require("../../images/" + product?.coverImage)}
+                  width={20}
+                  className="w-100"
+                  alt=""
+                />
               </div>
-              <div className="category-img">
-                <img src="" height={50} width={30} alt="" />
-              </div>
-            </div>
-            <div className="rat text-start">
-              <span>
-                <span className="star-rat">
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star"></i>
-                  <i className="fa-solid fa-star-half-stroke"></i>
-                </span>
-              </span>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
-    </>
-  );
+    );
+  }
 }
+
+export default AllProducts;

@@ -1,13 +1,14 @@
-.products{
-    .products-title{
-        .title{
+.products {
+    .products-title {
+        .title {
 
             font-size: 3rem;
-            color: $secondary;  
+            color: $secondary;
         }
     }
-    .products-sub-title{
-        .sub-title{
+
+    .products-sub-title {
+        .sub-title {
             font-size: 1.5rem;
         }
     }
@@ -16,28 +17,34 @@
         width: 100%;
         height: 100%;
     }
-    .product-swiper{
-        .swiper-slide{
+
+    .product-swiper {
+        .swiper-slide {
             width: 20%;
             text-align: center;
             font-size: 18px;
             align-items: center;
             transition: .5s;
             cursor: pointer;
+
             @media screen and (max-width: 992px) {
-                    width:40%;
-                }
+                width: 40%;
+            }
+
             @media screen and (max-width: 400px) {
-                    width:60%;
-                }
-                padding: 10px;
-                border-radius: 30px;
-                border: 1px solid $border;
-                .card-title{
-                    font-size: 1.2rem;
-                    color: $secondary;
-                }
+                width: 60%;
+            }
+
+            padding: 10px;
+            border-radius: 30px;
+            border: 1px solid $border;
+
+            .card-title {
+                font-size: 1.2rem;
+                color: $secondary;
+            }
         }
+
         .swiper-button-prev {
             background-image: url('../../images/left.png');
             background-repeat: no-repeat;
@@ -48,12 +55,13 @@
             transition: 1s;
             background-color: rgb(204 204 204 / 26%);
             left: 0;
-            background-size:80%;
+            background-size: 80%;
+
             &:hover {
                 background-color: $primary;
             }
         }
-            
+
         .swiper-button-next {
             background-image: url('../../images/right.png');
             background-position: center center;
@@ -64,17 +72,18 @@
             height: 2.7rem;
             transition: 1s;
             right: 0;
-            background-size:80%;
+            background-size: 80%;
+
             &:hover {
                 background-color: $primary;
             }
         }
-            
+
         .swiper-button-next::after,
         .swiper-button-prev::after {
             content: "";
         }
-    
+
     }
 
 }

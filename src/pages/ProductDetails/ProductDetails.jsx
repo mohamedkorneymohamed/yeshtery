@@ -1,138 +1,183 @@
 import React, { Component } from "react";
-import Swiper from "swiper/bundle";
-import "swiper/swiper-bundle.css";
-import ss from "../../images/productA(3).jpg";
+import AllProducts from "../../Components/AllProducts/AllProducts";
+import Details from "../../Components/Details/Details";
+import Footer from "../../Components/Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+import ProductService from "../../services/dataService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 class ProductDetails extends Component {
-  componentDidMount() {
-    // Initialize Swiper
-    this.mainSwiper = new Swiper(".main-swiper-container", {
-      loop: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
+  constructor(props) {
+    super(props);
 
-    this.thumbsSwiper = new Swiper(".thumbs-swiper-container", {
-      slidesPerView: "1",
-      spaceBetween: 10,
-      loop: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 4,
-        },
-      },
-      thumbs: {
-        swiper: this.mainSwiper,
-      },
-    });
+    this.state = {
+      cart: 0,
+      products: [],
+      productsCart: [],
+      isLoading: false,
+    };
+    this.addToCart = this.addToCart.bind(this);
+    this.getProductsDetails = this.getProductsDetails.bind(this);
+    this.deleteProducts = this.deleteProducts.bind(this);
+  }
+  deleteProducts(productId) {
+    try {
+      const { productsCart } = this.state;
+
+      const filteredProducts = productsCart.filter(
+        (product) => product.id !== productId
+      );
+      const myCart = ProductService?.getCart();
+      this.setState({ cart: myCart, productsCart: filteredProducts });
+
+      this.setState((prevState) => ({
+        products: [
+          {
+            ...prevState.products[0],
+            quantity: Math.max(0, prevState.products[0].quantity - 1),
+          },
+        ],
+      }));
+
+      console.log("Product deleted successfully:", productId);
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
   }
 
+  getProductsDetails(productId) {
+    try {
+      const myProducts = [...ProductService?.getAllProducts()];
+      const filteredProducts = myProducts?.filter(
+        (product) => product.id == productId
+      );
+
+      this.setState({ products: filteredProducts });
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
+  }
+  addToCart(productId) {
+    try {
+      const myCart = ProductService?.getCart();
+      const myProductsCart = [...ProductService?.getAllProducts()];
+      const filteredProducts = myProductsCart?.filter(
+        (product) => product.id == productId
+      );
+
+      this.setState({ isLoading: true });
+      this.setState({ productsCart: filteredProducts });
+
+      if (myCart == 0) {
+        this.setState({ cart: myCart + 1 });
+
+        setTimeout(() => {
+          // After 1 second, set loading back to false
+          this.setState({ isLoading: false });
+
+          // Perform your actual addToCart logic here
+          // ...
+        }, 1000);
+        this.setState((prevState) => {
+          const updatedQuantity = prevState.products[0].quantity + 1;
+
+          if (prevState.products[0].quantity === 0) {
+            this.notifySuccess();
+            return {
+              products: [
+                {
+                  ...prevState.products[0],
+                  quantity: updatedQuantity,
+                },
+              ],
+            };
+          }
+
+          return this.notifyError(); // Do nothing if quantity would be 0
+        });
+      } else {
+        // Do nothing if cart is not empty
+      }
+    } catch (error) {
+      console.error("Error fetching product details:", error);
+    }
+  }
+  handleIncrement = () => {
+    this.setState((prevState) => ({
+      products: [
+        {
+          ...prevState.products[0],
+          quantity: prevState.products[0].quantity + 1,
+        },
+      ],
+    }));
+  };
+  handleDecrement = () => {
+    this.setState((prevState) => {
+      const updatedQuantity = Math.max(0, prevState.products[0].quantity - 1);
+
+      if (updatedQuantity === 0) {
+        // Call the deleteProducts function with the productId
+        const productIdToDelete = prevState.productsCart[0].id;
+        this.deleteProducts(productIdToDelete);
+      }
+
+      return {
+        products: [
+          {
+            ...prevState.products[0],
+            quantity: updatedQuantity,
+          },
+        ],
+      };
+    });
+  };
+  notifySuccess = () => {
+    toast.success("Product added successfully to your cart", {
+      position: "top-right",
+      autoClose: 3000, // Close the notification after 3 seconds
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  notifyError = () => {
+    toast.error("This product has already  added to your cart ", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   render() {
+    const { products, isLoading, productsCart } = this.state;
+
     return (
       <>
-        <div className="product-details my-5">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-md-6">
-                <div className="main-swiper-container">
-                  <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
-                    </div>
-                    <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
-                    </div>
-                    <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
-                    </div>
-                    <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
-                    </div>
+        <ToastContainer />
 
-                    {/* Add more main slides as needed */}
-                  </div>
-                  <div className="swiper-button-next"></div>
-                  <div className="swiper-button-prev"></div>
-                </div>
-                <div className="thumbs-swiper-container">
-                  <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
-                    </div>
-                    <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
-                    </div>
-                    <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
-                    </div>
-                    <div className="swiper-slide">
-                      <img src={ss} alt="" className="w-50" />
-                    </div>
-                    {/* Add more thumb slides as needed */}
-                  </div>
-                  <div className="swiper-button-next"></div>
-                  <div className="swiper-button-prev"></div>
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="category-content">
-                  <img src="" width={70} alt="" />
-                  <h3 className="py-4">
-                    {/* Add your dynamic content here */}
-                  </h3>
-                  <span className="rat-number">
-                    {/* Add your dynamic content here */}
-                  </span>
-                  <span className="star-rat">
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star"></i>
-                    <i className="fa-solid fa-star-half-stroke"></i>
-                  </span>
-                  <div className="price">
-                    {/* Add your dynamic content here */} EGP
-                  </div>
-                  <h5 className="desc">More Details:</h5>
-                  <span className="desc-content">
-                    {/* Add your dynamic content here */}
-                  </span>
-                  <div className="img-cover">
-                    <img src="" alt="" />
-                  </div>
-                  <div className="quantity py-3">
-                    <h5>Quantity:</h5>
-                    <div className="quantity-operation ">
-                      <div className="increment">
-                        <span className="mark-operation">+</span>
-                      </div>
-                      <div className="count"></div>
-                      <div className="decrement ">
-                        <button className="btn mark-operation ">-</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="cart pt-3">
-                    <div className="add-to-cart ">
-                      <button className="cart-btn">add to cart</button>
-                    </div>
-                    <span className="wishlist">
-                      <i className="fa-regular fa-heart"></i>
-                    </span>
-                    <span className="share">
-                      <i className="fa-solid fa-share-nodes"></i>{" "}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Navbar
+          cart={this.state.cart}
+          products={products}
+          productsCart={productsCart}
+          deleteProducts={this.deleteProducts}
+        />
+        <Details
+          addToCart={this.addToCart}
+          getProductsDetails={this.getProductsDetails}
+          handleIncrement={this.handleIncrement}
+          handleDecrement={this.handleDecrement}
+          products={products}
+          isLoading={isLoading}
+        />
+        <AllProducts />
+        <Footer />
       </>
     );
   }
