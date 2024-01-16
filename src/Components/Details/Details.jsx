@@ -14,22 +14,24 @@ import {
   Autoplay,
   Pagination,
 } from "swiper/modules";
+import { Shimmer } from "react-shimmer";
+
 class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
       thumbsSwiper: null,
+      shimer: false,
     };
   }
 
   componentDidMount() {
     this.props.getProductsDetails("1");
+    this.setState({ shimer: true });
 
-    try {
-      // Do something with the cart data if needed
-    } catch (error) {
-      console.error("Error fetching cart data:", error);
-    }
+    setTimeout(() => {
+      this.setState({ shimer: false });
+    }, 1500);
   }
 
   handleSetThumbsSwiper = (swiper) => {
@@ -37,7 +39,7 @@ class Details extends Component {
   };
 
   render() {
-    const { thumbsSwiper } = this.state;
+    const { thumbsSwiper, shimer } = this.state;
     const { addToCart, products, handleDecrement, handleIncrement, isLoading } =
       this.props;
 
@@ -58,15 +60,25 @@ class Details extends Component {
                   speed={2500}
                   className="mySwiper2"
                 >
-                  {products[0]?.images.map((img, index) => (
-                    <SwiperSlide key={index} className="text-center">
-                      <img
-                        src={require(`../../images/${img}`)}
-                        className="w-50"
-                        alt=""
-                      />
-                    </SwiperSlide>
-                  ))}
+                  {shimer ? (
+                    <>
+                      <SwiperSlide>
+                        <Shimmer className="shimmer" />
+                      </SwiperSlide>
+                    </>
+                  ) : (
+                    <>
+                      {products[0]?.images.map((img, index) => (
+                        <SwiperSlide key={index} className="text-center">
+                          <img
+                            src={require(`../../images/${img}`)}
+                            className="w-50"
+                            alt=""
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </>
+                  )}
                 </Swiper>
                 <Swiper
                   onSwiper={this.handleSetThumbsSwiper}
@@ -78,98 +90,131 @@ class Details extends Component {
                   modules={[FreeMode, Navigation, Thumbs]}
                   className="mySwiper"
                 >
-                  {products[0]?.images.map((img, index) => (
-                    <SwiperSlide key={index} className="text-center">
-                      <img
-                        src={require(`../../images/${img}`)}
-                        className="w-50"
-                        alt=""
-                      />
-                    </SwiperSlide>
-                  ))}
+                  {shimer ? (
+                    <>
+                      {" "}
+                      <SwiperSlide>
+                        <Shimmer width={100} height={100} />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <Shimmer width={100} height={100} />
+                      </SwiperSlide>
+                      <SwiperSlide>
+                        <Shimmer width={100} height={100} />
+                      </SwiperSlide>
+                    </>
+                  ) : (
+                    <>
+                      {products[0]?.images.map((img, index) => (
+                        <SwiperSlide key={index} className="text-center">
+                          <img
+                            src={require(`../../images/${img}`)}
+                            className="w-50"
+                            alt=""
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </>
+                  )}
                 </Swiper>
               </div>
               <div className="col-md-6">
                 <div className="category-content">
-                  <>
-                    {products[0] && (
-                      <img
-                        src={require(`../../images/${products[0].brandImage}`)}
-                        width={50}
-                        alt=""
-                      />
-                    )}
-                    <h3 className="py-4">{products[0]?.description}</h3>
-                    <span className="rat-number">{products[0]?.rat}</span>
-                    <div className="price">{products[0]?.price} EGP</div>
-                    <span className="desc">Color : {products[0]?.color}</span>
-                    <div className="img-cover">
+                  {shimer ? (
+                    <>
+                      <Shimmer width={100} height={100} />
+                      <Shimmer width={400} height={10} className="my-2" />
+                      <Shimmer width={200} height={10} className="my-2" />
+                      <Shimmer width={200} height={10} className="my-2" />
+                      <Shimmer width={200} height={10} className="my-2" />
+                      <Shimmer width={200} height={10} className="my-2" />
+                      <Shimmer width={350} height={10} className="my-2" />
+                      <Shimmer width={100} height={100} className="my-2" />
+                      <Shimmer width={100} height={10} className="my-2" />
+                      <Shimmer width={130} height={10} className="my-2" />
+                      <Shimmer width={200} height={10} className="my-2" />
+                    </>
+                  ) : (
+                    <>
                       {products[0] && (
                         <img
-                          src={require(`../../images/${products[0].categoryImage}`)}
+                          src={require(`../../images/${products[0].brandImage}`)}
                           width={50}
                           alt=""
                         />
                       )}
-                    </div>
-                    <span className="desc">{products[0]?.size}</span>
-
-                    <div className="quantity py-3">
-                      <h5>Quantity:</h5>
-                      <div className="quantity-operation ">
-                        <div className="increment">
-                          {products[0]?.quantity > 0 ? (
-                            <button
-                              className="mark-operation"
-                              onClick={handleIncrement}
-                            >
-                              <span className="Arithmetic-mark">+</span>
-                            </button>
-                          ) : (
-                            <button className="btn mark-operation" disabled>
-                              <span className="Arithmetic-mark">+</span>
-                            </button>
-                          )}
-                        </div>
-                        <div className="count">{products[0]?.quantity}</div>
-                        <div className="decrement">
-                          {products[0]?.quantity > 0 ? (
-                            <button
-                              className="btn mark-operation"
-                              onClick={handleDecrement}
-                            >
-                              <span className="Arithmetic-mark">-</span>
-                            </button>
-                          ) : (
-                            <button className="btn mark-operation" disabled>
-                              <span className="Arithmetic-mark">-</span>
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="cart pt-3">
-                      <div
-                        className="add-to-cart "
-                        onClick={() => addToCart(products[0]?.id)}
-                      >
-                        {isLoading ? (
-                          <button className="cart-btn">
-                            {" "}
-                            <i className="fas fa-circle-notch fa-spin"></i>
-                          </button>
-                        ) : (
-                          <button className="cart-btn">add to cart</button>
+                      <h3 className="py-4">{products[0]?.description}</h3>
+                      <span className="rat-number">{products[0]?.rat}</span>
+                      <div className="price">{products[0]?.price} EGP</div>
+                      <span className="desc">Color : {products[0]?.color}</span>
+                      <div className="img-cover">
+                        {products[0] && (
+                          <img
+                            src={require(`../../images/${products[0].categoryImage}`)}
+                            width={50}
+                            alt=""
+                          />
                         )}
                       </div>
-                      <span className="wishlist">
-                        <i className="fa-regular fa-heart"></i>
-                      </span>
-                      <span className="share">
-                        <i className="fa-solid fa-share-nodes"></i>{" "}
-                      </span>
-                    </div>
-                  </>
+                      <span className="desc">{products[0]?.size}</span>
+
+                      <div className="quantity py-3">
+                        <h5>Quantity:</h5>
+                        <div className="quantity-operation ">
+                          <div className="increment">
+                            {products[0]?.quantity > 0 ? (
+                              <button
+                                className="mark-operation"
+                                onClick={handleIncrement}
+                              >
+                                <span className="Arithmetic-mark">+</span>
+                              </button>
+                            ) : (
+                              <button className="btn mark-operation" disabled>
+                                <span className="Arithmetic-mark">+</span>
+                              </button>
+                            )}
+                          </div>
+                          <div className="count">{products[0]?.quantity}</div>
+                          <div className="decrement">
+                            {products[0]?.quantity > 0 ? (
+                              <button
+                                className="btn mark-operation"
+                                onClick={handleDecrement}
+                              >
+                                <span className="Arithmetic-mark">-</span>
+                              </button>
+                            ) : (
+                              <button className="btn mark-operation" disabled>
+                                <span className="Arithmetic-mark">-</span>
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="cart pt-3">
+                        <div
+                          className="add-to-cart "
+                          onClick={() => addToCart(products[0]?.id)}
+                        >
+                          {isLoading ? (
+                            <button className="cart-btn">
+                              {" "}
+                              <i className="fas fa-circle-notch fa-spin"></i>
+                            </button>
+                          ) : (
+                            <button className="cart-btn">add to cart</button>
+                          )}
+                        </div>
+                        <span className="wishlist">
+                          <i className="fa-regular fa-heart"></i>
+                        </span>
+                        <span className="share">
+                          <i className="fa-solid fa-share-nodes"></i>{" "}
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

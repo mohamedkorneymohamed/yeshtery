@@ -77,11 +77,8 @@ class ProductDetails extends Component {
         this.setState({ cart: myCart + 1 });
 
         setTimeout(() => {
-          // After 1 second, set loading back to false
           this.setState({ isLoading: false });
 
-          // Perform your actual addToCart logic here
-          // ...
         }, 1000);
         this.setState((prevState) => {
           const updatedQuantity = prevState.products[0].quantity + 1;
@@ -182,7 +179,7 @@ class ProductDetails extends Component {
         />
         <Suspense fallback={<div>Loading...</div>}>
           <LazyLoadedAllProducts />
-        </Suspense>{" "}
+        </Suspense>
         <Footer />
       </>
     );
