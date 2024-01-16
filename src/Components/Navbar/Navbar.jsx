@@ -28,9 +28,15 @@ class Navbar extends Component {
   list = (anchor, products, deleteProducts, productsCart) => (
     <Box
       sx={{
-        width: 200, // Default width
-        "@media (min-width:768px)": {
-          width: anchor === "top" || anchor === "bottom" ? "auto" : 400,
+        width: 400, // Default width
+        "@media (max-width:768px)": {
+          width: anchor === "top" || anchor === "bottom" ? "auto" : 300,
+      
+        },
+       
+        "@media (max-width:465px)": {
+          width: anchor === "top" || anchor === "bottom" ? "auto" : 260,
+      
         },
       }}
       role="presentation"
