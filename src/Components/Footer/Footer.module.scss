@@ -1,0 +1,90 @@
+.yeshtery-footer{
+    background-color: $bg-primary;
+    .yeshtery-content{
+        .desc{
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 3px;
+                    height: 100%;
+                    background-color: $border;
+                            @media screen and (max-width: 768px) {
+                                    width: 0;
+                                }
+                            
+            }
+            .yeshtery-footer__desc{
+                color: $light-dark;
+            }
+        }
+    }
+    .subscribe-title{
+        color: $light-dark;
+    }
+    .subscribe-content {
+    .subscribe{
+    border: 1px solid;
+    border-color: $border ;
+    border-radius: 30px;
+    width: 100%;
+    background-color:$light;      
+    .input-text {
+        width: 70%;
+        & :first-child {
+            border-color: transparent;
+            outline-style: none;
+            border-radius: 30px;
+            width: 100%;
+            padding: 10px;
+        }
+    }
+    .sub-button{
+
+    border: transparent;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 30px ;
+    color:$dark ;
+    background-color: $primary;
+        }
+    }
+    }
+    .yeshtery-info{
+        .yeshtery-info__content{
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 3px;
+                height: 100%;
+                background-color: $border;
+            }
+            .info-link{
+                color: $light-dark;
+                line-height: 2;
+                font-weight: 600;
+                    @media screen and (max-width: 568px) {
+                line-height: 3;
+                                    }
+            }
+        }
+    }
+    .yeshtery-social{
+        .social-link{
+            line-height: 2.8;
+            color: $light-dark;
+                @media screen and (max-width: 568px) {
+                        line-height: 4;
+                    }
+        }
+    }
+    .copy-right{
+        border-top: 3px solid $border;
+        color: $light-dark;
+    }
+}

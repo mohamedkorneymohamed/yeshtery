@@ -1,0 +1,126 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "quantity":0,
+      "brandImage": "brand.png",
+      "categoryImage": "A8.jpg",
+      "description": "Adidas Primeblue Designed 2 Move Heathered Sport Tee  ",
+      "price": 2000,
+      "rat": "No Rating Yet",
+      "color": "LEGINK",
+      "coverImage": "A6.jpg",
+      "size": "L",
+      "images":[
+          "A2.jpg",
+          "A3.jpg",
+          "A4.jpg",
+          "A5.jpg"
+      ]
+    },
+    {
+      "id": 2,
+           "quantity":0,
+      "brandImage": "brand.png",
+      "categoryImage": "B8.jpg",
+      "description": "Adidas Primeblue Designed 2 Move Heathered Sport Tee  ",
+      "price": 2000,
+      "rat": "No Rating Yet",
+      "color": "LEGINK",
+      "coverImage": "B6.jpg",
+      "size": "L",
+      "images":[
+          "B2.jpg",
+          "B3.jpg",
+          "B4.jpg"      ]
+    },
+    {
+      "id": 3,
+        "quantity":0,
+      "brandImage": "brand.png",
+      "categoryImage": "C8.jpg",
+      "description": "adidas Primeblue Designed 2 Move Heathered Sport Tee  ",
+      "price": 2000,
+      "rat": "No Rating Yet",
+      "color": "LEGINK",
+      "coverImage": "C6.jpg",
+      "size": "L",
+      "images":[
+          "C3.jpg",
+          "C4.jpg",
+          "C5.jpg"
+      ]
+    },
+    {
+      "id": 4,
+            "quantity":0,
+      "brandImage": "brand.png",
+      "categoryImage": "D8.jpg",
+      "description": "Adidas Primeblue Designed 2 Move Heathered Sport Tee  ",
+      "price": 2000,
+      "rat": "No Rating Yet",
+      "color": "LEGINK",
+      "coverImage": "D6.jpg",
+      "size": "L",
+      "images":[
+          "D2.jpg",
+          "D3.jpg",
+          "D4.jpg",
+          "D5.jpg"
+      ]
+    },
+    {
+      "id": 5,
+            "quantity":0,
+      "brandImage": "brand.png",
+      "categoryImage": "B8.jpg",
+      "description": "Adidas Primeblue Designed 2 Move Heathered Sport Tee  ",
+      "price": 2000,
+      "rat": "No Rating Yet",
+      "color": "LEGINK",
+      "coverImage": "B6.jpg",
+      "size": "L",
+      "images":[
+          "B2.jpg",
+          "B3.jpg",
+          "B4.jpg"
+      ]
+    },
+    {
+      "id": 6,
+            "quantity":0,
+      "brandImage": "brand.png",
+      "categoryImage": "C8.jpg",
+      "description": "Adidas Primeblue Designed 2 Move Heathered Sport Tee  ",
+      "price": 2000,
+      "rat": "No Rating Yet",
+      "color": "LEGINK",
+      "coverImage": "C6.jpg",
+      "size": "L",
+      "images":[
+          "C3.jpg",
+          "C4.jpg",
+          "C5.jpg"
+      ]
+    },
+    {
+      "id": 7,
+            "quantity":0,
+      "brandImage": "brand.png",
+      "categoryImage": "D8.jpg",
+      "description": "Adidas Primeblue Designed 2 Move Heathered Sport Tee  ",
+      "price": 2000,
+      "rat": "No Rating Yet",
+      "color": "LEGINK",
+      "coverImage": "D6.jpg",
+      "size": "L",
+      "images":[
+          "D2.jpg",
+          "D3.jpg",
+          "D4.jpg",
+          "D5.jpg"
+      ]
+    }
+  ],
+  "numberOfCart":0
+}
