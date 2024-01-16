@@ -13,17 +13,7 @@ import {
 import productsDatw from "../../data/products-data.json";
 
 class AllProducts extends Component {
-  // ... your existing code
-  // componentDidMount() {
-  //   try {
-  //     this.mainSwiper = new Swiper(".main-swiper-container", {
-  //       loop: true,
-  //       className: "mySwiper2 ",
-  //     });
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
+
   productDetails(productId) {
    let newProducts = [...productsDatw.products];
     newProducts = newProducts.filter((product) => product.id !== productId);

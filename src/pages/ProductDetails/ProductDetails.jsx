@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense ,lazy} from "react";
 import AllProducts from "../../Components/AllProducts/AllProducts";
 import Details from "../../Components/Details/Details";
 import Footer from "../../Components/Footer/Footer";
@@ -6,6 +6,11 @@ import Navbar from "../../Components/Navbar/Navbar";
 import ProductService from "../../services/dataService";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+const LazyLoadedAllProducts = lazy(() =>
+  import("../../Components/AllProducts/AllProducts")
+);
+
 class ProductDetails extends Component {
   constructor(props) {
     super(props);
@@ -161,7 +166,6 @@ class ProductDetails extends Component {
     return (
       <>
         <ToastContainer />
-
         <Navbar
           cart={this.state.cart}
           products={products}
@@ -176,7 +180,9 @@ class ProductDetails extends Component {
           products={products}
           isLoading={isLoading}
         />
-        <AllProducts />
+        <Suspense fallback={<div>Loading...</div>}>
+          <LazyLoadedAllProducts />
+        </Suspense>{" "}
         <Footer />
       </>
     );
