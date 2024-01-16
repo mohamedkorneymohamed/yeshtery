@@ -21,6 +21,8 @@ class AllProducts extends Component {
     console.log(productsDatw);
   }
   render() {
+    const { getProductsDetails } = this.props;
+
     return (
       <div className="products">
         <div className="container mb-3">
@@ -46,7 +48,7 @@ class AllProducts extends Component {
             <SwiperSlide
               key={product?.id}
               width={20}
-              onClick={() => this.productDetails(product.id)}
+              onClick={() => getProductsDetails(product.id)}
             >
               <div className="product-img">
                 <img

@@ -27,7 +27,12 @@ class Navbar extends Component {
 
   list = (anchor, products, deleteProducts, productsCart) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 400 }}
+      sx={{
+        width: 200, // Default width
+        "@media (min-width:768px)": {
+          width: anchor === "top" || anchor === "bottom" ? "auto" : 400,
+        },
+      }}
       role="presentation"
       onClick={this.toggleDrawer(anchor, false)}
       onKeyDown={this.toggleDrawer(anchor, false)}
@@ -75,6 +80,7 @@ class Navbar extends Component {
   );
 
   render() {
+
     const { cart, products, deleteProducts, productsCart } = this.props;
     return (
       <>

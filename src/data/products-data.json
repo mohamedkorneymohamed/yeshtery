@@ -32,9 +32,7 @@
       "images":[
           "B2.jpg",
           "B3.jpg",
-          "B4.jpg",
-          "B5.jpg"
-      ]
+          "B4.jpg"      ]
     },
     {
       "id": 3,
@@ -48,7 +46,6 @@
       "coverImage": "C6.jpg",
       "size": "L",
       "images":[
-          "C2.jpg",
           "C3.jpg",
           "C4.jpg",
           "C5.jpg"
@@ -86,8 +83,7 @@
       "images":[
           "B2.jpg",
           "B3.jpg",
-          "B4.jpg",
-          "B5.jpg"
+          "B4.jpg"
       ]
     },
     {
@@ -102,7 +98,6 @@
       "coverImage": "C6.jpg",
       "size": "L",
       "images":[
-          "C2.jpg",
           "C3.jpg",
           "C4.jpg",
           "C5.jpg"

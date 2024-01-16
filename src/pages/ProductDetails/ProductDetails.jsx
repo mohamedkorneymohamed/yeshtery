@@ -178,7 +178,7 @@ class ProductDetails extends Component {
           isLoading={isLoading}
         />
         <Suspense fallback={<div>Loading...</div>}>
-          <LazyLoadedAllProducts />
+          <LazyLoadedAllProducts getProductsDetails={this.getProductsDetails} />
         </Suspense>
         <Footer />
       </>
